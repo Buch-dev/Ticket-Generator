@@ -7,6 +7,8 @@ import LogoIcon from "./components/Logo";
 import CloudUploadIcon from "./components/CloudUpload";
 import InfoIcon from "./components/InfoIcon";
 import BgPathIcon from "./components/BgPathMobile";
+import Form from "./components/Form";
+import Container from "./components/Container";
 
 function App() {
   const [previewUrl, setPreviewUrl] = useState("");
@@ -40,95 +42,12 @@ function App() {
       <BgLinesIcon className={`absolute top-0`} />
       <LogoIcon className={`mt-[33px]`} />
       <BgPathIcon className={`absolute bottom-0 left-0`} />
-
-      <h2 className="text-white text-3xl font-extrabold leading-[33px] text-center mt-10">
-        Your Journey to Coding Conf 2025 Starts Here!
-      </h2>
-      <p className="text-[#D1D0D5] text-[20px] mt-5 font-medium text-center leading-[24px]">
-        Secure your spot at next year’s biggest coding conference.
-      </p>
+      
+      {/* Container */}
+      <Container />
 
       {/* Upload */}
-      <form className="mt-10 flex flex-col w-full gap-6">
-        <div className="flex flex-col gap-3">
-          <label
-            htmlFor="avatar"
-            className="text-white text-[20px] font-medium"
-          >
-            Upload Avatar
-          </label>
-          <div className="relative border border-white border-dashed p-3 rounded-xl bg-[#8784A5]/5">
-            <input
-              type="file"
-              name="avatar"
-              id="avatar"
-              onChange={handleAvatarUpload}
-              className="text-white absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-              required
-            />
-            <div className="flex justify-center ">
-              {previewUrl && (
-                <img
-                  src={previewUrl}
-                  alt="Avatar"
-                  className="w-20 h-20 rounded-full"
-                />
-              )}{" "}
-              {/* Display the preview image */}
-              <div className="flex flex-col items-center justify-center">
-                <CloudUploadIcon />
-                <p className="text-[18px] text-[#D1D0D5]">
-                  Drag and drop or click to upload
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex gap-2">
-            <InfoIcon />
-            <p className="text-[#D1D0D5] text-xs">
-              Upload your photo (JPG or PNG, max size: 500KB).
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-col gap-3">
-          <label htmlFor="name" className="text-white text-[20px] font-medium">
-            Full name
-          </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            className="border border-white p-4 rounded-xl bg-[#8784A5]/5 text-[#D1D0D5] text-[20px]"
-          />
-        </div>
-        <div className="flex flex-col gap-3">
-          <label htmlFor="email" className="text-white text-[20px] font-medium">
-            Email
-          </label>
-          <input
-            type="text"
-            name="email"
-            id="email"
-            placeholder="example@email.com"
-            className="border border-white p-4 rounded-xl bg-[#8784A5]/5 text-[#D1D0D5] text-[20px]"
-          />
-        </div>
-        <div className="flex flex-col gap-3">
-          <label htmlFor="name" className="text-white text-[20px] font-medium">
-            Github Username
-          </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="@yourusername"
-            className="border border-white p-4 rounded-xl bg-[#8784A5]/5 text-[#D1D0D5] text-[20px]"
-          />
-        </div>
-        <button className="bg-[#F57463] text-[#0D082D] text-[20px] font-extrabold py-4 rounded-xl mb-[113.91px] z-10">
-          Generate My Ticket
-        </button>
-      </form>
+      <Form previewUrl={previewUrl} handleAvatarUpload={handleAvatarUpload} />
     </div>
   );
 }
