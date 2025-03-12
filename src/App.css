@@ -4,3 +4,11 @@
 body {
   font-family: "Inconsolata", monospace;
 }
+
+/* Add your custom CSS here */
+
+.text-gradient {
+  background: linear-gradient(to right, #F57463, #FFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
