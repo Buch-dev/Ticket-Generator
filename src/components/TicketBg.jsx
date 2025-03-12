@@ -1,12 +1,13 @@
 import * as React from "react";
 
-const TicketBgIcon = (props) => (
+const TicketBgIcon = ({className}) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="600"
     height="280"
     fill="none"
     viewBox="0 0 600 280"
+    className={className}
   >
     <foreignObject width="680" height="360" x="-40" y="-40">
       <div

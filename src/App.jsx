@@ -11,11 +11,11 @@ import Form from "./components/Form";
 import Container from "./components/Container";
 import BgLinesTabletIcon from "./components/BgLinesTablet";
 import BgLinesDesktopIcon from "./components/BgLinesDesktop";
+import TicketBgIcon from "./components/TicketBg";
 
 function App() {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
   const [previewUrl, setPreviewUrl] = useState("");
-  const [ticketDisplay, setTicketDisplay] = useState(false)
 
   const handleAvatarUpload = async (e) => {
     const file = e.target.files[0];
@@ -46,7 +46,7 @@ function App() {
 
   return (
     <div
-      className="flex flex-col items-center justify-center p-5 bg-cover bg-no-repeat relative"
+      className="flex flex-col items-center justify-center p-4 md:p-5 bg-cover bg-no-repeat relative overflow-hidden"
       style={{ backgroundImage }}
     >
       <CirclesIcon
@@ -72,14 +72,38 @@ function App() {
       <LogoIcon className={`mt-[33px]`} loading="lazy" />
       <BgPathIcon className={`absolute bottom-0 left-0`} loading="lazy" />
 
-      {/* Container */}
-      <Container />
-
-      {/* Upload */}
-      <Form previewUrl={previewUrl} handleAvatarUpload={handleAvatarUpload} />
+      {step === 1 && (
+        <>
+          {/* Container */}
+          <Container />
+          {/* Upload */}
+          <Form
+            previewUrl={previewUrl}
+            handleAvatarUpload={handleAvatarUpload}
+          />
+        </>
+      )}
 
       {/* Ticket Badge */}
-      <h2 className="text-3xl font-extrabold text-white">Congrats, <span className="text-gradient">Jonatan Kristof!</span> Your ticket is ready.</h2>
+      {step === 2 && (
+        <>
+          <div className="flex flex-col gap-5">
+            <h2 className="text-3xl font-extrabold text-white text-center mt-10">
+              Congrats, <span className="text-gradient">Jonatan</span>{" "}
+              <span className="text-gradient">Kristof!</span> Your ticket is
+              ready.
+            </h2>
+            <p className="text-[#D1D0D5] text-[20px] font-medium text-center z-10 tracking-tight">
+              We've emailed your ticket to{" "}
+              <span className="text-[#F57463]">jonatan@email.com</span> and will
+              send updates in the run up to the event.
+            </p>
+          </div>
+
+          {/* Ticket Generated */}
+          <TicketBgIcon className={`mt-[40px] w-full`} />
+        </>
+      )}
     </div>
   );
 }
