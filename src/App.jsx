@@ -96,11 +96,15 @@ function App() {
       style={{ backgroundImage }}
     >
       <CirclesIcon
-        className={`absolute top-[-30px] left-[-14px]`}
+        className={`absolute top-[0px] left-[0px] w-[107px] h-[107px] md:w-[217px] md:h-[217px] md:top-[-87px]`}
+        loading="lazy"
+      />
+      <CirclesIcon
+        className={`absolute top-[548px] right-[40px] w-[107px] h-[107px] md:w-[217px] md:h-[217px] md:top-[-552px] md:right-[166px]`}
         loading="lazy"
       />
       <ElementTopMobileIcon
-        className={`absolute top-[23.86px] right-0`}
+        className={`absolute top-[23.86px] right-0 md:w-[232px] h-[108.187px] md:top-[88px] lg:right-[-50px] lg:w-[333px] lg:h-[112px]`}
         loading="lazy"
       />
       <BgLinesIcon
@@ -141,39 +145,43 @@ function App() {
         </>
       )}
 
-      {/* Ticket Badge */}
-      {step === 2 && (
-        <>
-          <div className="flex flex-col gap-5">
-            <h2 className="text-3xl font-extrabold text-white text-center mt-10">
-              Congrats, <span className="text-gradient">Jonatan</span>{" "}
-              <span className="text-gradient">Kristof!</span> Your ticket is
-              ready.
-            </h2>
-            <p className="text-[#D1D0D5] text-[20px] font-medium text-center z-10 tracking-tight leading-[120%]">
-              We've emailed your ticket to{" "}
-              <span className="text-[#F57463]">jonatan@email.com</span> and will
-              send updates in the run up to the event.
-            </p>
-          </div>
+      /* Ticket Badge */
+        {step === 2 && (
+          <>
+            <div className="flex flex-col items-center gap-5 md:gap-8">
+          <h2 className="text-3xl font-extrabold text-white text-center mt-10 md:text-6xl lg:w-[891px]">
+            Congrats, <span className="text-gradient">{fullName.split(" ")[0]}</span>{" "}
+            <span className="text-gradient">{fullName.split(" ")[1]}!</span> Your ticket is
+            ready.
+          </h2>
+          <p className="text-[#D1D0D5] text-[20px] font-medium text-center z-10 tracking-tight leading-[120%] md:text-2xl md:w-[514px]">
+            We've emailed your ticket to{" "}
+            <span className="text-[#F57463]">{email}</span> and will
+            send updates in the run up to the event.
+          </p>
+            </div>
 
-          {/* Ticket Generated */}
+            {/* Ticket Generated */}
           <div className="relative">
-            <TicketBgIcon className={`z-10 mb-[291.93px] w-full`} />
-            <LogoIcon className={`absolute inset-0 top-[80px] left-[16px]`} />
-            <p className="text-[#D1D0D5] text-sm leading-[120%] absolute top-[110px] left-[53px]">
+            <TicketBgIcon className={`z-10 mb-[291.93px] w-full md:mt-20`} />
+            <LogoIcon className={`absolute inset-0 top-[80px] left-[16px] md:scale-150 md:top-[110px] md:left-[63px]`} />
+            <p className="text-[#D1D0D5] text-sm leading-[120%] absolute top-[110px] left-[53px] md:text-lg md:top-[145px] md:left-[75px]">
               Jan 31, 2025 / Austin, TX
             </p>
-            <p className="text-[#8784A5] text-[22px] font-medium absolute top-[122px] right-[-5px] rotate-90">
+            <p className="text-[#8784A5] text-[22px] font-medium absolute top-[122px] right-[-5px] rotate-90 md:text-3xl md:top-[200px] md:right-[8px]">
               #01609
             </p>
-            <div className="flex gap-3 items-center justify-center absolute top-[156px] left-4">
+            <div className="flex gap-3 items-center justify-center absolute top-[156px] left-4 md:top-[260px] md:left-5">
               {avatarUrl && (
-                <img src={avatarUrl} alt="avatar" className="w-[45px] h-[45px] rounded-lg" />
+                <img
+                  src={avatarUrl}
+                  alt="avatar"
+                  className="w-[45px] h-[45px] rounded-lg md:w-20 md:h-20"
+                />
               )}
               <div className="flex flex-col items-start">
-                <p className="text-[20px] text-white font-medium">{fullName}</p>
-                <p className="text-sm font-normal text-[#D1D0D5] flex items-center justify-center gap-1">
+                <p className="text-[20px] text-white font-medium md:text-3xl">{fullName}</p>
+                <p className="text-sm font-normal text-[#D1D0D5] flex items-center justify-center gap-1 md:text-xl">
                   <GithubIcon /> {username}
                 </p>
               </div>

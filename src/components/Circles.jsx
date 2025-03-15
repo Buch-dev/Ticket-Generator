@@ -1,10 +1,10 @@
 import * as React from "react";
 
-const CirclesIcon = ({className}) => (
+const CirclesIcon = ({className, width,height}) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="107"
-    height="107"
+    width={width}
+    height={height}
     fill="none"
     viewBox="0 0 87 77"
     className={className}
