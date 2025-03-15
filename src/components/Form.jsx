@@ -14,26 +14,15 @@ const Form = ({
   fullName,
   email,
   username,
+  handleAvatarUpload,
+  avatarUrl,
+  previewUrl,
+  setPreviewUrl,
 }) => {
-  const [previewUrl, setPreviewUrl] = useState("");
-
-  const handleAvatarUpload = async (e) => {
+  const handleAvatarChange = (e) => {
     const file = e.target.files[0];
     setPreviewUrl(URL.createObjectURL(file)); // Set the preview URL for the selected file
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", "my_buch_preset"); // Replace with your Cloudinary upload preset
-
-    try {
-      const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dcyhuwujh/image/upload",
-        formData
-      ); // Replace with your Cloudinary cloud name
-      setAvatarUrl(response.data.secure_url);
-      localStorage.setItem("avatarUrl", response.data.secure_url);
-    } catch (error) {
-      console.error("Error uploading image:", error);
-    }
+    handleAvatarUpload(e); // Call the handleAvatarUpload function passed as a prop
   };
 
   return (
@@ -50,7 +39,7 @@ const Form = ({
             type="file"
             name="avatar"
             id="avatar"
-            onChange={handleAvatarUpload}
+            onChange={handleAvatarChange}
             className="text-white absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
             required
           />

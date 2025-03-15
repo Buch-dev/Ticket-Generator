@@ -20,6 +20,8 @@ function App() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
+  const [avatarUrl, setAvatarUrl] = useState("");
+  const [previewUrl, setPreviewUrl] = useState("");
 
   const validateForm = () => {
     const newErrors = {};
@@ -61,7 +63,8 @@ function App() {
 
   const handleAvatarUpload = async (e) => {
     const file = e.target.files[0];
-    setPreviewUrl(URL.createObjectURL(file)); // Set the preview URL for the selected file
+    const previewUrl = URL.createObjectURL(file); // Set the preview URL for the selected file
+    setPreviewUrl(previewUrl);
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", "my_buch_preset"); // Replace with your Cloudinary upload preset
@@ -73,6 +76,7 @@ function App() {
       ); // Replace with your Cloudinary cloud name
       setAvatarUrl(response.data.secure_url);
       localStorage.setItem("avatarUrl", response.data.secure_url);
+      console.log("Avatar URL set:", response.data.secure_url);
     } catch (error) {
       console.error("Error uploading image:", error);
     }
@@ -129,6 +133,10 @@ function App() {
             fullName={fullName}
             email={email}
             username={username}
+            handleAvatarUpload={handleAvatarUpload}
+            avatarUrl={avatarUrl}
+            previewUrl={previewUrl}
+            setPreviewUrl={setPreviewUrl}
           />
         </>
       )}
@@ -160,13 +168,13 @@ function App() {
               #01609
             </p>
             <div className="flex gap-3 items-center justify-center absolute top-[156px] left-4">
-              <img src="./avatar-ticket.png" alt="avatar" />
-              <div className="flex flex-col">
-                <p className="text-[20px] text-white font-medium">
-                  Jonatan Kristof
-                </p>
+              {avatarUrl && (
+                <img src={avatarUrl} alt="avatar" className="w-[45px] h-[45px] rounded-lg" />
+              )}
+              <div className="flex flex-col items-start">
+                <p className="text-[20px] text-white font-medium">{fullName}</p>
                 <p className="text-sm font-normal text-[#D1D0D5] flex items-center justify-center gap-1">
-                  <GithubIcon /> @jonatankristof0101
+                  <GithubIcon /> {username}
                 </p>
               </div>
             </div>
