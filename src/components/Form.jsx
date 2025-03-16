@@ -35,7 +35,7 @@ const Form = ({
         <label htmlFor="avatar" className="text-white text-[20px] font-medium">
           Upload Avatar
         </label>
-        <div className="relative border border-white border-dashed p-3 rounded-xl bg-[#8784A5]/5">
+        <div className="relative border border-white border-dashed p-3 rounded-xl bg-[#8784A5]/5 hover:bg-[#8784A5]/20">
           <input
             type="file"
             name="avatar"
@@ -100,9 +100,9 @@ const Form = ({
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
           aria-required="true"
-          className="border border-white p-4 rounded-xl bg-[#8784A5]/5 text-[#D1D0D5] text-[20px] z-10"
+          className={`border p-4 rounded-xl bg-[#8784A5]/5 text-[#D1D0D5] text-[20px] z-10 hover:bg-[#8784A5]/20 transition-all cursor-pointer ${errors.fullName ? 'border-[#F57463]' : 'border-white'}`}
         />
-        {errors.fullName && <p className="text-red-500">{errors.fullName}</p>}
+        {errors.fullName && <p className="text-[#F57463] text-xs">{errors.fullName}</p>}
       </div>
       <div className="flex flex-col gap-3">
         <label htmlFor="email" className="text-white text-[20px] font-medium">
@@ -116,9 +116,9 @@ const Form = ({
           onChange={(e) => setEmail(e.target.value)}
           aria-required="true"
           placeholder="example@email.com"
-          className="border border-white p-4 rounded-xl bg-[#8784A5]/5 text-[#D1D0D5] text-[20px] z-10"
+          className={`border p-4 rounded-xl bg-[#8784A5]/5 text-[#D1D0D5] text-[20px] z-10 hover:bg-[#8784A5]/20 transition-all cursor-pointer ${errors.email ? 'border-[#F57463]' : 'border-white'}`}
         />
-        {errors.email && <p className="text-red-500">{errors.email}</p>}
+        {errors.email && <p className="text-[#F57463] text-xs">{errors.email}</p>}
       </div>
       <div className="flex flex-col gap-3">
         <label htmlFor="github" className="text-white text-[20px] font-medium">
@@ -131,11 +131,11 @@ const Form = ({
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="@yourusername"
-          className="border border-white p-4 rounded-xl bg-[#8784A5]/5 text-[#D1D0D5] text-[20px] z-10"
+          className={`border p-4 rounded-xl bg-[#8784A5]/5 text-[#D1D0D5] text-[20px] z-10 hover:bg-[#8784A5]/20 transition-all cursor-pointer ${errors.username ? 'border-[#F57463]' : 'border-white'}`}
         />
-        {errors.username && <p className="text-red-500">{errors.username}</p>}
+        {errors.username && <p className="text-[#F57463] text-xs">{errors.username}</p>}
       </div>
-      <button className="bg-[#F57463] text-[#0D082D] text-[20px] font-extrabold py-4 rounded-xl mb-[113.91px] z-10">
+      <button className="bg-[#F57463] text-[#0D082D] text-[20px] font-extrabold py-4 rounded-xl mb-[113.91px] z-10 cursor-pointer hover:shadow-[#F57463] hover:bg-[#E1604F] hover:shadow">
         Generate My Ticket
       </button>
     </form>

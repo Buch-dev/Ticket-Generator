@@ -143,24 +143,6 @@ function App() {
             previewUrl={previewUrl}
             setPreviewUrl={setPreviewUrl}
           />
-          <div className="flex gap-2 mt-4">
-            <input type="file" onChange={handleAvatarUpload} />
-            <button
-              className="bg-blue-500 text-white px-4 py-2 rounded"
-              onClick={() => document.querySelector('input[type="file"]').click()}
-            >
-              Replace Image
-            </button>
-            <button
-              className="bg-red-500 text-white px-4 py-2 rounded"
-              onClick={() => {
-                setAvatarUrl("");
-                setPreviewUrl("");
-              }}
-            >
-              Remove Image
-            </button>
-          </div>
         </>
       )}
 
