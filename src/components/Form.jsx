@@ -16,6 +16,7 @@ const Form = ({
   username,
   handleAvatarUpload,
   avatarUrl,
+  setAvatarUrl,
   previewUrl,
   setPreviewUrl,
 }) => {
@@ -48,7 +49,7 @@ const Form = ({
               <img
                 src={previewUrl}
                 alt="Avatar"
-                className="w-20 h-20 rounded-full"
+                className="w-[50px] h-[50px] rounded-xl border border-[#8784A5]"
               />
             ) : (
               <div className="flex flex-col items-center justify-center">
@@ -59,6 +60,27 @@ const Form = ({
               </div>
             )}
           </div>
+          {previewUrl && (
+            <div className="flex gap-2 items-center justify-center mt-4">
+              <button
+                onClick={() =>
+                  document.querySelector('input[type="file"]').click()
+                }
+                className="z-10 bg-[#D1D0D5]/20 text-xs tracking-[-0.2px] py-1 px-2 rounded-sm text-white hover:underline cursor-pointer"
+              >
+                Change image
+              </button>
+              <button
+                onClick={() => {
+                  setAvatarUrl("");
+                  setPreviewUrl("");
+                }}
+                className="z-10 bg-[#D1D0D5]/20 text-xs tracking-[-0.2px] py-1 px-2 rounded-sm text-white hover:underline cursor-pointer"
+              >
+                Remove image
+              </button>
+            </div>
+          )}
         </div>
         <div className="flex gap-2">
           <InfoIcon />

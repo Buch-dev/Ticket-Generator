@@ -139,29 +139,48 @@ function App() {
             username={username}
             handleAvatarUpload={handleAvatarUpload}
             avatarUrl={avatarUrl}
+            setAvatarUrl={setAvatarUrl}
             previewUrl={previewUrl}
             setPreviewUrl={setPreviewUrl}
           />
+          <div className="flex gap-2 mt-4">
+            <input type="file" onChange={handleAvatarUpload} />
+            <button
+              className="bg-blue-500 text-white px-4 py-2 rounded"
+              onClick={() => document.querySelector('input[type="file"]').click()}
+            >
+              Replace Image
+            </button>
+            <button
+              className="bg-red-500 text-white px-4 py-2 rounded"
+              onClick={() => {
+                setAvatarUrl("");
+                setPreviewUrl("");
+              }}
+            >
+              Remove Image
+            </button>
+          </div>
         </>
       )}
 
-      /* Ticket Badge */
-        {step === 2 && (
-          <>
-            <div className="flex flex-col items-center gap-5 md:gap-8">
-          <h2 className="text-3xl font-extrabold text-white text-center mt-10 md:text-6xl lg:w-[891px]">
-            Congrats, <span className="text-gradient">{fullName.split(" ")[0]}</span>{" "}
-            <span className="text-gradient">{fullName.split(" ")[1]}!</span> Your ticket is
-            ready.
-          </h2>
-          <p className="text-[#D1D0D5] text-[20px] font-medium text-center z-10 tracking-tight leading-[120%] md:text-2xl md:w-[514px]">
-            We've emailed your ticket to{" "}
-            <span className="text-[#F57463]">{email}</span> and will
-            send updates in the run up to the event.
-          </p>
-            </div>
+      {/* Ticket Badge */}
+      {step === 2 && (
+        <>
+          <div className="flex flex-col items-center gap-5 md:gap-8">
+            <h2 className="text-3xl font-extrabold text-white text-center mt-10 md:text-6xl lg:w-[891px]">
+              Congrats, <span className="text-gradient">{fullName.split(" ")[0]}</span>{" "}
+              <span className="text-gradient">{fullName.split(" ")[1]}!</span> Your ticket is
+              ready.
+            </h2>
+            <p className="text-[#D1D0D5] text-[20px] font-medium text-center z-10 tracking-tight leading-[120%] md:text-2xl md:w-[514px]">
+              We've emailed your ticket to{" "}
+              <span className="text-[#F57463]">{email}</span> and will
+              send updates in the run up to the event.
+            </p>
+          </div>
 
-            {/* Ticket Generated */}
+          {/* Ticket Generated */}
           <div className="relative">
             <TicketBgIcon className={`z-10 mb-[291.93px] w-full md:mt-20`} />
             <LogoIcon className={`absolute inset-0 top-[80px] left-[16px] md:scale-150 md:top-[110px] md:left-[63px]`} />
